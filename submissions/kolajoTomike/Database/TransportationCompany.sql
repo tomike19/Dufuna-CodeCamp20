@@ -22,11 +22,12 @@ CREATE TABLE trip(
 id INT NOT NULL AUTO_INCREMENT,
 trip_id INT NOT NULL,
 registered_passengers_id INT NOT NULL,
-passenger_class decimal (15,2) NOT NULL,
-passenger_ticket INT NOT NULL,
-assigned_cabin INT NOT NULL,
-parent_number VARCHAR(15) NOT NULL,
-children_number VARCHAR (15) NOT NULL,
+passenger_class INT NOT NULL,
+passenger_ticket VARCHAR(255) NOT NULL,
+trip_fare decimal(10, 2) not null,
+assigned_cabin VARCHAR(25) NOT NULL,
+parent_or_children_abroad INT(15) NOT NULL,
+siblings_or_spouses_abroad INT (15) NOT NULL,
 embarkation_point VARCHAR (255) NOT NULL,
 primary key (id),
 foreign key (trip_id) references passengers(id)
@@ -36,7 +37,7 @@ select * from trip;
 CREATE TABLE accidents (
 id INT NOT NULL AUTO_INCREMENT,
 passenger_id INT NOT NULL,
-accident_status VARCHAR (50) NOT NULL,
+accident_status TINYINT(5) NOT NULL,
 primary key (id),
 foreign key (passenger_id) references passengers(id)
 );
